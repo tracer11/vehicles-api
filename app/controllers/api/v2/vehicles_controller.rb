@@ -1,4 +1,4 @@
-class VehiclesController < ApplicationController
+class Api::V2::VehiclesController < ApplicationController
   def index
     @vehicles = Vehicle.all
   end
@@ -26,6 +26,6 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
     @vehicle.destroy
 
-    render :show
+    render json: {message: 'Vehicle Deleted'}, status: 200
   end
 end
