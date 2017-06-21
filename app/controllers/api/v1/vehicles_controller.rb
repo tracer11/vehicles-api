@@ -4,13 +4,21 @@ class Api::V1::VehiclesController < ApplicationController
   end
 
   def create
-    @vehicle = Vehicle.create(
+    @vehicle = Vehicle.new(
                               vin: params[:vin],
                               manufacture: params[:manufacture])
-    render :show
+    if @vehicle.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @vehicle.errors.full_messages}, status: 422
+    end
   end
 
   def show
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  def edit
     @vehicle = Vehicle.find(params[:id])
   end
 

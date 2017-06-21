@@ -1,0 +1,20 @@
+<div id="app1">
+  <ul>
+    <li v-for="error in errors">{{error}}</li>
+  </ul>
+  <div>
+    <input type="text" v-model="newVehicleVin">
+    <input type="text" v-model="newVehicleManufacture">
+    <button v-on:click="addVehicle()">Add Vehicle</button>
+  </div>
+  <div>
+    <input type="text" v-model="updateVin">
+    <input type="text" v-model="updateManufacture">
+    <button v-on:click="updateVehicle">Update Vehicle</button>
+  </div>
+  <div v-for="vehicle in vehicles">
+    <p>{{vehicle.manufacture}}</p>
+    <p>{{vehicle.vin}}</p>
+    <hr>
+  </div>
+</div>
